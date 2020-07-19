@@ -3,18 +3,10 @@ package com.example.photospoc
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.photospoc.repository.PhotoRepository
 
-fun getPhotosMock(): List<Photo> {
-    val tempList = arrayListOf<Photo>()
-
-    for (i in 1..40) {
-        tempList.add(Photo(title = "Title $i", thumbnailUrl = "https://via.placeholder.com/150/92c952"))
-    }
-
-    return tempList
-}
-
-class PhotosAdapter(private val photos: List<Photo> = getPhotosMock()) : RecyclerView.Adapter<PhotoViewHolder>() {
+class PhotosAdapter(private val photos: List<Photo> = PhotoRepository().getPhotos()) :
+    RecyclerView.Adapter<PhotoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.photo_row, parent, false)
 

@@ -1,24 +1,28 @@
 package com.example.photospoc.repository
 
-import com.example.photospoc.Photo
+import com.example.photospoc.repository.remote.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class PhotoRepository {
 
-    fun getPhotos(): List<Photo> = getPhotosMock()
+    private val apiClient = ApiClient.instance
 
-    private fun getPhotosMock(): List<Photo> {
-        val tempList = arrayListOf<Photo>()
+    fun getPhotos(handleSuccess: (List<Photo>) -> Unit) {
+        val call = apiClient.list()
 
-        for (i in 1..40) {
-            tempList.add(
-                Photo(
-                    title = "Title $i",
-                    thumbnailUrl = "https://via.placeholder.com/150/92c952"
-                )
-            )
-        }
+        call.enqueue(object : Callback<List<Photo>> {
+            override fun onResponse(call: Call<List<Photo>>, response: Response<List<Photo>>) {
+                if (response.isSuccessful) {
+                    val photos = response.body()?.let { it?.map { photo -> photo } } ?: listOf()
+                    handleSuccess(photos)
+                }
+            }
 
-        return tempList
+            override fun onFailure(call: Call<List<Photo>>, t: Throwable) {
+            }
+        })
     }
 
 }

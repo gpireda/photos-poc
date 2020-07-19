@@ -3,8 +3,8 @@ package com.example.photospoc.view.ui
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.photospoc.Photo
 import com.example.photospoc.R
+import com.example.photospoc.repository.Photo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.photo_row.view.*
 

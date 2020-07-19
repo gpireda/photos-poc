@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.photospoc.Photo
-import com.example.photospoc.PhotosViewModel
 import com.example.photospoc.R
+import com.example.photospoc.repository.Photo
+import com.example.photospoc.view.viewmodel.PhotosViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,12 +24,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observe() {
-        viewModel.photos.observe(this, Observer<List<Photo>> { configureRecyclerView() })
+        viewModel.photos.observe(this, Observer<List<Photo>> { photos: List<Photo> ->
+            configureRecyclerView(photos)
+        })
     }
 
-    private fun configureRecyclerView() {
+    private fun configureRecyclerView(photos: List<Photo>) {
         findViewById<RecyclerView>(R.id.photos_recycler_view).apply {
-            adapter = PhotosAdapter() { item ->
+            adapter = PhotosAdapter(photos) { item ->
                 val intent = PhotoDetailsActivity.getIntent(this@MainActivity)
                 intent.putExtra("PHOTO_DETAILS_INTENT", item.title)
 

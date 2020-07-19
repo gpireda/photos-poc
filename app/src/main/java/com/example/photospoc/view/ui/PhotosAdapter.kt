@@ -3,12 +3,11 @@ package com.example.photospoc.view.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.photospoc.Photo
 import com.example.photospoc.R
-import com.example.photospoc.repository.PhotoRepository
+import com.example.photospoc.repository.Photo
 
 class PhotosAdapter(
-    private val photos: List<Photo> = PhotoRepository().getPhotos(),
+    private val photos: List<Photo>,
     private val listener: (Photo) -> Unit
 ) :
     RecyclerView.Adapter<PhotoViewHolder>() {

@@ -1,7 +1,7 @@
 package com.example.photospoc
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -11,9 +11,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<RecyclerView>(R.id.photos_recycler_view).apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            setHasFixedSize(true)
             adapter = PhotosAdapter()
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@MainActivity)
         }
     }
 }

@@ -1,10 +1,13 @@
-package com.example.photospoc
+package com.example.photospoc.view.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.photospoc.Photo
+import com.example.photospoc.PhotosViewModel
+import com.example.photospoc.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +29,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun configureRecyclerView() {
         findViewById<RecyclerView>(R.id.photos_recycler_view).apply {
-            adapter = PhotosAdapter()
+            adapter = PhotosAdapter() { item ->
+                val intent = PhotoDetailsActivity.getIntent(this@MainActivity)
+                intent.putExtra("PHOTO_DETAILS_INTENT", item.title)
+
+                startActivity(intent)
+            }
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@MainActivity)
         }

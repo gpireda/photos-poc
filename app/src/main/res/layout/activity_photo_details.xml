@@ -7,14 +7,25 @@
     android:padding="8dp"
     tools:context=".view.ui.PhotoDetailsActivity">
 
+    <ImageView
+        android:id="@+id/photo_image_view"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:contentDescription="Photo Detail Image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/photo_details_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="PhotoDetailsActivity"
-        android:textSize="24sp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/photo_image_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.photospoc.R
+import com.example.photospoc.constants.PhotoConstants
 import com.example.photospoc.repository.Photo
 import com.example.photospoc.view.viewmodel.PhotosViewModel
 
@@ -39,7 +40,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleItemClick(item: Photo) {
         val intent = PhotoDetailsActivity.getIntent(this@MainActivity)
-        intent.putExtra("PHOTO_DETAILS_INTENT", item.title)
+        intent.putExtra(PhotoConstants.INTENT.PHOTO_TITLE, item.title)
+        intent.putExtra(PhotoConstants.INTENT.PHOTO_URL, item.url)
 
         startActivity(intent)
     }

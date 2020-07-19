@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PhotosPoc</string>
+    <string name="photo_thumbnail_content_description">Thumbnail</string>
 </resources>

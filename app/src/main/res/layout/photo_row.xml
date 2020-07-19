@@ -6,10 +6,20 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
+    <ImageView
+        android:contentDescription="@string/photo_thumbnail_content_description"
+        android:id="@+id/thumbnail_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:background="@color/colorAccent"
+        tools:layout_height="50dp"
+        tools:layout_width="50dp" />
+
     <TextView
         android:id="@+id/title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         tools:text="Title 1" />
 
 </LinearLayout>
